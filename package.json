@@ -1,0 +1,56 @@
+{
+  "name": "fastify-kysely",
+  "version": "1.0.0",
+  "description": "Plugin to share a common Kysely instance across Fastify.",
+  "main": "index.js",
+  "type": "commonjs",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "lint": "standard",
+    "lint:fix": "standard --fix",
+    "test": "npm run unit && npm run typescript",
+    "typescript": "tsd",
+    "unit": "tap",
+    "unit:report": "tap --coverage-report=html --coverage-report=cobertura",
+    "unit:verbose": "tap -Rspec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alenap93/fastify-kysely.git"
+  },
+  "keywords": [
+    "fastify",
+    "kysely",
+    "database",
+    "sql",
+    "query-builder"
+  ],
+  "author": "Alessio Napolitano - @alenap93",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alenap93/fastify-kysely/issues"
+  },
+  "homepage": "https://github.com/alenap93/fastify-kysely#readme",
+  "devDependencies": {
+    "@fastify/pre-commit": "^2.1.0",
+    "@types/better-sqlite3": "^7.6.10",
+    "@types/node": "^20.12.10",
+    "better-sqlite3": "^9.6.0",
+    "fastify": "^4.27.0",
+    "standard": "^17.1.0",
+    "tap": "^18.7.3",
+    "tsd": "^0.31.0",
+    "why-is-node-running": "^2.2.2"
+  },
+  "dependencies": {
+    "fastify-plugin": "^4.5.1",
+    "kysely": "^0.27.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
+}
