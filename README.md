@@ -1,6 +1,8 @@
 # fastify-kysely
 
+[![CI](https://github.com/alenap93/fastify-kysely/actions/workflows/ci.yml/badge.svg)](https://github.com/alenap93/fastify-kysely/actions/workflows/ci.yml)
 [![NPM version](https://img.shields.io/npm/v/fastify-kysely.svg?style=flat)](https://www.npmjs.com/package/fastify-kysely)
+[![NPM downloads](https://img.shields.io/npm/dm/fastify-kysely.svg?style=flat)](https://www.npmjs.com/package/fastify-kysely)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
 
 Fastify Kysely connection plugin; with this you can share the same Kysely instances in every part of your server.
