@@ -57,12 +57,6 @@ test('fastify.kysely should throw error if kysely instance not defined', (t) => 
   t.plan(1)
   const fastify = Fastify()
 
-  const sqliteDialectOne = new SqliteDialect({
-    database: new Database(':memory:')
-  })
-
-  const kyselyInstanceOne = new Kysely({ dialect: sqliteDialectOne })
-
   fastify.register(fastifyKysely, {
     namespace: 'one'
   })

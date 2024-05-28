@@ -5,8 +5,6 @@ const fp = require('fastify-plugin')
 function fastifyKysely (fastify, options, next) {
   const { namespace, kysely } = options
 
-  const client = options.client || null
-
   if (!namespace) {
     return next(new Error('Namespace not defined'))
   }
