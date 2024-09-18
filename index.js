@@ -33,7 +33,7 @@ function fastifyKysely (fastify, options, next) {
 }
 
 module.exports = fp(fastifyKysely, {
-  fastify: '4.x',
+  fastify: '5.x',
   name: 'fastify-kysely'
 })
 module.exports.default = fastifyKysely
