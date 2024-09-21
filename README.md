@@ -128,6 +128,35 @@ server.register(fastifyKysely, { namespace: 'sqliteDB', kysely: kyselyInstance }
 
 By using the `namespace` option you can register multiple Kysely instances.
 
+## Compatibility to Fastify Versions
+
+<table>
+  <thead>
+    <tr>
+      <th>Fastify</th>
+      <th>fastify-kysely</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        v4
+      </td>
+      <td>
+        1.x.x
+      </td>
+    </tr>
+    <tr>
+      <td>
+        v5
+      </td>
+      <td>
+        2.x.x
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 ## Example
 
 Example is available [here](https://github.com/alenap93/fastify-kysely-example).
