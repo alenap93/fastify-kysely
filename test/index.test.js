@@ -1,15 +1,14 @@
 'use strict'
 
 const whyIsNodeRunning = require('why-is-node-running')
-const t = require('tap')
-const test = t.test
+const { test } = require('node:test')
 const Fastify = require('fastify')
 const fastifyKysely = require('..')
 const { Kysely, SqliteDialect } = require('kysely')
 const Database = require('better-sqlite3')
 
-test('fastify.kysely should exist', (t) => {
-  t.plan(3)
+test('fastify.kysely should exist', async (t) => {
+  t.plan(2)
   const fastify = Fastify()
 
   const sqliteDialectOne = new SqliteDialect({
@@ -23,16 +22,14 @@ test('fastify.kysely should exist', (t) => {
     kysely: kyselyInstanceOne
   })
 
-  fastify.ready((err) => {
-    t.error(err)
-    t.ok(fastify.kysely)
-    t.ok(fastify.kysely.one)
+  await fastify.ready()
+  t.assert.ok(fastify.kysely)
+  t.assert.ok(fastify.kysely.one)
 
-    fastify.close()
-  })
+  await fastify.close()
 })
 
-test('fastify.kysely should throw error if namespace will not exist', (t) => {
+test('fastify.kysely should throw error if namespace will not exist', async (t) => {
   t.plan(1)
   const fastify = Fastify()
 
@@ -45,15 +42,16 @@ test('fastify.kysely should throw error if namespace will not exist', (t) => {
   fastify.register(fastifyKysely, {
     kysely: kyselyInstanceOne
   })
+  try {
+    await fastify.ready()
+  } catch (err) {
+    t.assert.equal(err.message, 'Namespace not defined')
+  }
 
-  fastify.ready((err) => {
-    t.equal(err.message, 'Namespace not defined')
-
-    fastify.close()
-  })
+  await fastify.close()
 })
 
-test('fastify.kysely should throw error if kysely instance not defined', (t) => {
+test('fastify.kysely should throw error if kysely instance not defined', async (t) => {
   t.plan(1)
   const fastify = Fastify()
 
@@ -61,11 +59,13 @@ test('fastify.kysely should throw error if kysely instance not defined', (t) => 
     namespace: 'one'
   })
 
-  fastify.ready((err) => {
-    t.equal(err.message, 'Kysely instance not defined')
+  try {
+    await fastify.ready()
+  } catch (err) {
+    t.assert.equal(err.message, 'Kysely instance not defined')
+  }
 
-    fastify.close()
-  })
+  await fastify.close()
 })
 
 test('fastify.kysely should throw error if kysely instance namespace has already been registered', async (t) => {
@@ -94,11 +94,13 @@ test('fastify.kysely should throw error if kysely instance namespace has already
     namespace: 'one'
   })
 
-  fastify.ready((err) => {
-    t.equal(err.message, 'Kysely \'one\' instance namespace has already been registered')
+  try {
+    await fastify.ready()
+  } catch (err) {
+    t.assert.equal(err.message, 'Kysely \'one\' instance namespace has already been registered')
+  }
 
-    fastify.close()
-  })
+  await fastify.close()
 })
 
 test('person table will be created', async (t) => {
@@ -133,13 +135,13 @@ test('person table will be created', async (t) => {
     })
     .execute()
 
-  t.equal(resultInsert[0].numInsertedOrUpdatedRows, 1n)
+  t.assert.equal(resultInsert[0].numInsertedOrUpdatedRows, 1n)
 
   const resultSelect = await fastify.kysely.one.selectFrom('person')
     .selectAll()
     .execute()
 
-  t.equal(resultSelect[0].gender, 'M')
+  t.assert.equal(resultSelect[0].gender, 'M')
 
   await fastify.close()
 })
