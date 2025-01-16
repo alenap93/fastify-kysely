@@ -37,7 +37,7 @@
     "fastify": "^5.0.0",
     "standard": "^17.1.0",
     "tsd": "^0.31.0",
-    "why-is-node-running": "^2.2.2"
+    "why-is-node-running": "^3.2.2"
   },
   "dependencies": {
     "c8": "^10.1.3",
