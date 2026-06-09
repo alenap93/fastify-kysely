@@ -42,7 +42,7 @@
     "why-is-node-running": "^2.2.2"
   },
   "dependencies": {
-    "fastify-plugin": "^5.0.0"
+    "fastify-plugin": "^6.0.0"
   },
   "peerDependencies": {
     "kysely": "^0.28.0"
