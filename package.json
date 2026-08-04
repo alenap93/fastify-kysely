@@ -31,7 +31,7 @@
   "homepage": "https://github.com/alenap93/fastify-kysely#readme",
   "devDependencies": {
     "@fastify/pre-commit": "^2.1.0",
-    "@types/better-sqlite3": "^7.6.10",
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "^25.0.0",
     "better-sqlite3": "^12.1.1",
     "c8": "^10.1.3",
